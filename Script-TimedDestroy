@@ -1,0 +1,25 @@
+//This script is used to destroy an object/item when collided with it.
+//The script should be used on the object that you want destroyed.
+//From Unity Inspector the desired time for delay should be set. 
+
+
+using System.Collections;
+using UnityEngine;
+using Object = UnityEngine.Object;
+
+public class objectTimedDestroyer : MonoBehaviour
+{
+    [SerializeField] private int timeToDestroy = 3;
+
+    private void Awake()
+    {
+        StartCoroutine("EffectDuration");
+    }
+
+   IEnumerator EffectDuration()
+    {
+        yield return new WaitForSeconds(timeToDestroy);
+        Object.Destroy(this.gameObject);
+    }
+   
+}
